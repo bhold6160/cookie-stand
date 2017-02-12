@@ -4,7 +4,8 @@ var pikePlaceMarket = {
   minPeeps: 17,
   maxPeeps: 88,
   avgCookies: 5.2,
-  total: [],
+  total: 0,
+  totalArr: [],
 
 customerPerHour: function(min, max) {
   return Math.random() * (this.maxPeeps - this.minPeeps + 1) + this.minPeeps;
@@ -13,8 +14,9 @@ customerPerHour: function(min, max) {
 cookiesPerHour: function() {
   for(i = 0; i < hours.length; i++) {
     var totalCookies = Math.floor(this.customerPerHour() * this.avgCookies);
-    this.total.push(totalCookies)
-    console.log(this.total)
+    this.totalArr.push(totalCookies)
+    this.total += totalCookies
+    console.log(this.totalArr)
     }
   },
 
@@ -22,9 +24,11 @@ render: function() {
   var ulElement = document.getElementById('pike-place');
   for (i = 0; i < 8; i++) {
   var li = document.createElement('li');
-    li.textContent = hours[i] + ' ' + this.total[i] + ' cookies';
+    li.textContent = hours[i] + ' ' + this.totalArr[i] + ' ' + ' cookies';
     ulElement.appendChild(li);
     }
+    li.textContent = 'Totals ' + this.total;
+    ulElement.appendChild[i];
   }
 }
 
