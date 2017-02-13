@@ -1,14 +1,14 @@
 var hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm',];
 
-var pikePlaceMarket = {
-  minPeeps: 17,
+var pikePlaceMarket = { // Declaring variable as an object
+  minPeeps: 17, // Properties of the object...
   maxPeeps: 88,
   avgCookies: 5.2,
   total: 0,
   totalArr: [],
 
-customerPerHour: function(min, max) {
-  return Math.random() * (this.maxPeeps - this.minPeeps + 1) + this.minPeeps;
+customerPerHour: function(min, max) { // Declaring function with parameters min and max.
+  return Math.random() * (this.maxPeeps - this.minPeeps + 1) + this.minPeeps; // first finding the the result of max - min + min and multiply the result by a randomly generated number.
 },
 
 cookiesPerHour: function() {
@@ -35,3 +35,26 @@ render: function() {
 pikePlaceMarket.customerPerHour();
 pikePlaceMarket.cookiesPerHour();
 pikePlaceMarket.render();
+
+// Create table function
+table: function() {
+  var body = document.getElementById('body')[0];
+  var tbl = document.createElement('table');
+  var tblBody = document.createElement('tbody');
+}
+
+  for(i = 0; i < table.length; i++) {
+  var row = document.createElement('tr');
+}
+
+  for(j = 0; j < tableData.length; j++) {
+    var cell = document.createElement('td');
+    var cellText = document.createTextNode('cell in row ' + i + 'column ' + j);
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+  }
+  tblBody.appendChild(row);
+  tblBody.appendChild(tblBody);
+  body.appendChild(tbl);
+  tbl.setAttribute('border', '2');
+}
