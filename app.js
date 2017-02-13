@@ -38,7 +38,7 @@ pikePlaceMarket.render();
 
 // Create table function
 table: function() {
-  var body = document.getElementById('body')[0];
+  var body = document.getElementById('thead')[0];
   var tbl = document.createElement('table');
   var tblBody = document.createElement('tbody');
 }
@@ -52,9 +52,9 @@ table: function() {
     var cellText = document.createTextNode('cell in row ' + i + 'column ' + j);
     cell.appendChild(cellText);
     row.appendChild(cell);
-  }
-  tblBody.appendChild(row);
-  tblBody.appendChild(tblBody);
-  body.appendChild(tbl);
-  tbl.setAttribute('border', '2');
+
+    tblBody.appendChild(row);
+    tblBody.appendChild(tblBody);
+    body.appendChild(tbl);
+    tbl.setAttribute('border', '2');
 }
