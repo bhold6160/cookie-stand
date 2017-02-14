@@ -1,0 +1,18 @@
+* {
+  background-color: #3D3C3A
+}
+
+body {
+  color: #FFE5C2
+}
+
+#bg-color {
+  border: 1px solid;
+  border-radius: 6px;
+  display: block;
+  font-family: sans-serif;
+  margin: 3px;
+  outline: 1px;
+  padding: 10px;
+  text-align: center;
+}

@@ -1,11 +1,12 @@
-var hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm',];
 
 var pikePlaceMarket = {
+  storeName: 'Pike Place Market'
   minPeeps: 17,
   maxPeeps: 88,
   avgCookies: 5.2,
   total: 0,
   totalArr: [],
+  hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
 
 customerPerHour: function(min, max) {
   return Math.random() * (this.maxPeeps - this.minPeeps + 1) + this.minPeeps;
@@ -35,3 +36,17 @@ render: function() {
 pikePlaceMarket.customerPerHour();
 pikePlaceMarket.cookiesPerHour();
 pikePlaceMarket.render();
+
+var seaAirport = {
+  storeName: "SeaTac Airport",
+  minPeeps: 6,
+  maxPeeps: 24,
+  avgCookies: 1.2,
+  totalArr: [],
+  total: 0,
+  hours: ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
+
+  customerPerHour: function(min, max) {
+    return Math.random() * (this.maxPeeps - this.minPeeps + 1) - this.minPeeps;
+  }
+}
