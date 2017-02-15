@@ -41,16 +41,21 @@ function CookieStand(name, min, max, avg) {
 }
 
 var pikePlace = new CookieStand('Pike Place Market ', 17, 88, 5.2);
-pikePlace.renderCookiesPerHour();
-
 var seatacAirport = new CookieStand('SeaTac Airport ', 6, 24, 1.2);
-seatacAirport.renderCookiesPerHour();
-
 var southCenter = new CookieStand('SouthCenter ', 11, 38, 1.9);
-southCenter.renderCookiesPerHour();
-
 var belleSquare = new CookieStand('Bellevue Square ', 20, 48, 3.3);
-belleSquare.renderCookiesPerHour();
-
 var alki = new CookieStand('Alki ', 3, 24, 2.6);
+
+pikePlace.renderCookiesPerHour();
+seatacAirport.renderCookiesPerHour();
+southCenter.renderCookiesPerHour();
+belleSquare.renderCookiesPerHour();
 alki.renderCookiesPerHour();
+
+
+// var userForm = getElementById('userForm');
+// var submitButton = getElementById('submitButton');
+//
+// function formSubmit(event) {
+//
+// }
