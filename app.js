@@ -26,7 +26,7 @@ function CookieStand(name, min, max, avg) {
     var tr = document.createElement('tr');
     var dataNames = document.createElement('td');
     table.appendChild(tr);
-    dataNames.appendChild(document.createTextNode(this.name));
+    dataNames.textContent = this.name;
     tr.appendChild(dataNames);
 
     for (i = 0; i < this.hours.length; i++) {
@@ -53,9 +53,12 @@ belleSquare.renderCookiesPerHour();
 alki.renderCookiesPerHour();
 
 
-// var userForm = getElementById('userForm');
-// var submitButton = getElementById('submitButton');
-//
-// function formSubmit(event) {
-//
-// }
+var userForm = getElementById('userForm');
+var submitButton = getElementById('submitButton');
+
+function formSubmit() {
+ var userData = document.createElement('tr')
+
+ var userStore = document.createElement('td')
+ userStore.textContent
+}

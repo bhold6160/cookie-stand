@@ -1,0 +1,28 @@
+* {
+  background-color: #3D3C3A
+}
+
+h1 {
+  color: #CC7500;
+  text-align: center
+}
+
+#table {
+  color: #FFE5C2;
+  border: solid;
+}
+
+tr {
+  border-style: solid;
+  border-width: 1px;
+}
+
+td {
+  border-style: solid;
+  border-width: 1px;
+}
+
+#userForm {
+  margin-top: 25px;
+  color: #B6823D
+}
