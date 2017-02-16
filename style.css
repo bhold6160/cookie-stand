@@ -1,14 +1,14 @@
 * {
-  background-color: #3D3C3A
+  background-color: #745A38;
 }
 
 h1 {
   color: #CC7500;
-  text-align: center
+  text-align: center;
 }
 
 #table {
-  color: #FFE5C2;
+  color: #3D3C3A;
   border: solid;
 }
 
@@ -24,5 +24,5 @@ td {
 
 #userForm {
   margin-top: 25px;
-  color: #B6823D
+  color: #B6823D;
 }
