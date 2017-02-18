@@ -15,17 +15,20 @@ function CookieStand(name, min, max, avg) {
   this.total = 0,
   this.totalArr = [],
   this.hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'],
+}
 
 // Generate random number
-  this.customerPerHour = function(){
+  CookieStand.prototype.customerPerHour = function(){
     return Math.random() * (this.max - this.min + 1) + this.min;
   }
 
-  this.cookiesPerHour = function() {
+  // Customers per hour
+  CookieStand.prototype.cookiesPerHour = function() {
     for (i = 0; i < this.hours.length; i++) {
-      var totalCookies = Math.floor(this.customerPerHour() * this.avg);
-      this.totalArr.push(totalCookies);
-      this.total += totalCookies;
+      var totalCustomers = Math.floor(this.customerPerHour() * this.avg);
+
+      this.totalArr.push(totalCustomers);
+      this.total += totalCustomers;
       console.log(this.totalArr);
     }
   }
@@ -40,16 +43,18 @@ function CookieStand(name, min, max, avg) {
     dataNames.textContent = this.name;
     tr.appendChild(dataNames);
 
+  // loop creating rows for store hours
     for (i = 0; i < this.hours.length; i++) {
       var td = document.createElement('td');
       td.textContent = this.totalArr[i] + ' Customers';
       tr.appendChild(td);
     }
+
+    //Totals row
     var tableTotal = document.createElement('td');
     tableTotal.textContent = this.total + ' Cookies';
     tr.appendChild(tableTotal);
   }
-}
 
 
 //calling each new variable and adding it to the table
@@ -61,16 +66,15 @@ alki.renderCookiesPerHour();
 
 // User input form
 var userForm = document.getElementById('userForm');
-// var submitButton = document.getElementById('submitButton');
+var submitButton = document.getElementById('submitButton');
 
 var table = document.getElementById('table');
 var tableBody = document.getElementById('tableBody');
 var tfoot = document.getElementsByTagName('tfoot')[i];
 
-// Creating the row and cells for the form beign submitted
+// Calculating function
 function makeFormRow(cellAdd) {
   var row = document.createElement('tr');
-  row.appendChild(tableBody);
 
   var nameCell = document.createElement('td');
   nameCell.textContent = cellAdd.name;
@@ -92,9 +96,7 @@ function makeFormRow(cellAdd) {
   totalCell.textContent = cellAdd.total;
   row.appendChild(totalCell);
 
-  var tableBody = document.createElement('td');
-  tableBody.textContent = cellAdd.total;
-  row.appendChild(tableBody);
+  tableBody.appendChild(row);
 }
 
 function updateObjects() {
@@ -103,7 +105,6 @@ function updateObjects() {
   }
 }
 
-// Appending the form to the table
 function formSubmit() {
  var userData = document.createElement('tr');
 
@@ -134,16 +135,14 @@ function handleFormSubmit(event) {
 
   var userNew = new CookieStand(name, min, max, avg);
   userNew.renderCookiesPerHour();
-  userNew.makeFormRow();
 
-  event.target.name.value = null;
-  event.target.max.value = null;
-  event.target.min.value = null;
-  event.target.avg.value = null;
+  newItemRow(userNew);
+  tfoot.innerHTML = '';
+  formSubmit();
 
 }
 
-table.addEventListener('submit', handleFormSubmit);
+table.addEventListener('submitButton', handleFormSubmit);
 
 formSubmit();
 renderCookiesPerHour();
