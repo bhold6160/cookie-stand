@@ -6,6 +6,7 @@
   <title>Salmon Cookie Shops</title>
 </head>
 <body>
+  <img id="headImg" src="salmonResize.png">
   <h1>Salmon Cookie Shops</h1>
   <main>
 
@@ -22,19 +23,35 @@
         <td>5 pm</td>
         <td>Total</td>
       </tr>
+
+      <tbody id= "tableBody">
+
+      </tbody>
+      <tfoot>
+
+      </tfoot>
     </table>
 
-    <!-- <h2>Pikes Place</h2>
-    <ul id = "pikePlace"></ul>
+    <form id= "userForm">
+      <fieldset>
+        <legend>How Many Cookies Should Your Store Make</legend>
 
-    <h2>Seatac Airport</h2>
-    <ul id = "seatacAirport"></ul>
+        <label for="name">Store Name</label>
+        <input type="text" name="name" required>
 
-    <h2>South Center</h2>
-    <ul id = "southCenter"></ul>
+        <label for="min">Minimum Customers</label>
+        <input type="number" name="min" required>
 
-    <h2>North Gate</h2>
-    <ul id = "alki"></ul> -->
+        <label for="max">Maximum Customers</label>
+        <input type="number" name="max" required>
+
+        <label for="avg">Average Cookies</label>
+        <input type="number" name="avg" required>
+
+        <input type="submit" value="submit">
+
+      </fieldset>
+    </form>
 
   </main>
   <script type="text/javascript" src= "app.js"></script>
