@@ -16,7 +16,7 @@ function CookieStand(name, min, max, avg) {
   this.totalArr = [],
   this.hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'],
 
-// Generate random number
+  // Generate random number
   this.customerPerHour = function(){
     return Math.random() * (this.max - this.min + 1) + this.min;
   }
@@ -30,7 +30,7 @@ function CookieStand(name, min, max, avg) {
     }
   }
 
-// function to create the table
+  // function to create the table
   CookieStand.prototype.renderCookiesPerHour = function() {
     this.cookiesPerHour();
     var table = document.getElementById('table');
@@ -51,7 +51,6 @@ function CookieStand(name, min, max, avg) {
   }
 }
 
-
 //calling each new variable and adding it to the table
 pikePlace.renderCookiesPerHour();
 seatacAirport.renderCookiesPerHour();
@@ -59,91 +58,49 @@ southCenter.renderCookiesPerHour();
 belleSquare.renderCookiesPerHour();
 alki.renderCookiesPerHour();
 
-// User input form
-var userForm = document.getElementById('userForm');
-// var submitButton = document.getElementById('submitButton');
-
+var form = document.getElementById('userForm');
 var table = document.getElementById('table');
-var tableBody = document.getElementById('tableBody');
-var tfoot = document.getElementsByTagName('tfoot')[i];
+var createRowElement = document.createElement('tr');
+table.appendChild(createRowElement);
 
-// Creating the row and cells for the form beign submitted
-function makeFormRow(cellAdd) {
-  var row = document.createElement('tr');
-  row.appendChild(tableBody);
+// Generating new table for user input
+function generateTable() {
+  var store = document.createElement('td');
+  store.textContent = this.name;
+  createRowElement.appendChild(store);
 
-  var nameCell = document.createElement('td');
-  nameCell.textContent = cellAdd.name;
-  row.appendChild(nameCell);
-
-  var minCell = document.createElement('td');
-  minCell.textContent = cellAdd.min;
-  row.appendChild(minCell);
-
-  var maxCell = document.createElement('td');
-  minCell.textContent = cellAdd.max;
-  row.appendChild(maxCell);
-
-  var avgCell = document.createElement('td');
-  avgCell.textContent = cellAdd.avg;
-  row.appendChild(avgCell);
-
-  var totalCell = document.createElement('td');
-  totalCell.textContent = cellAdd.total;
-  row.appendChild(totalCell);
-
-  var tableBody = document.createElement('td');
-  tableBody.textContent = cellAdd.total;
-  row.appendChild(tableBody);
-}
-
-function updateObjects() {
-  for (var addData of totalArr) {
-    makeFormRow(addData);
+  // For loop to creat rows for user input shop hours
+  for (i = 0; i < storeHours.length; i++) {
+    var perHour = document.createElement('td');
+    perHour.textContent = this.totalArr;
+    createRowElement.appendChild(perHour);
   }
+
+  // Total rows
+  var storeTotals = document.createElement('td');
+  storeTotals.textContent = this.total;
+  createRowElement.appendChild(storeTotals);
 }
 
-// Appending the form to the table
-function formSubmit() {
- var userData = document.createElement('tr');
+// Form submit event
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log(event);
 
- var userStore = document.createElement('td');
- userStore.textContent = this.name;
- userData.appendChild(userStore);
+    var name = event.target.name.value;
+    var min = parseFloat(event.target.min.value);
+    var max = parseFloat(event.target.max.value);
+    var avg = parseFloat(event.target.avg.value);
 
- var userArr = document.createElement('td');
- userArr.textContent = this.totalArr[i] + ' Customers';
- userData.appendChild(userArr)
+    var newStore = new CookieStand(name, min, max, avg);
+    newStore.cookiesPerHour();
+    newStore.renderCookiesPerHour();
 
- var userTotal = document.createElement('td')
- userTotal.textContent = this.total + ' Cookies';
- userData.appendChild(userTotal)
+    event.target.name.value = null;
+    event.target.max.value = null;
+    event.target.min.value = null;
+    event.target.avg.value = null;
+  }
 
- tfoot.appendChild(userData)
-}
-
-// Handling event
-function handleFormSubmit(event) {
-  event.preventDefault();
-  console.log(event);
-
-  var userName = event.target.name.value;
-  var userMin = parseFloat(event.target.min.value);
-  var userMax = parseFloat(event.target.max.value);
-  var userAvg = parseFloat(event.target.avg.value);
-
-  var userNew = new CookieStand(name, min, max, avg);
-  userNew.renderCookiesPerHour();
-  userNew.makeFormRow();
-
-  event.target.name.value = null;
-  event.target.max.value = null;
-  event.target.min.value = null;
-  event.target.avg.value = null;
-
-}
-
-table.addEventListener('submit', handleFormSubmit);
-
-formSubmit();
-renderCookiesPerHour();
+  form.addEventListener('submit',
+  handleFormSubmit);
