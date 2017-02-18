@@ -15,25 +15,22 @@ function CookieStand(name, min, max, avg) {
   this.total = 0,
   this.totalArr = [],
   this.hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'],
-}
 
-// Generate random number
-  CookieStand.prototype.customerPerHour = function(){
+  // Generate random number
+  this.customerPerHour = function(){
     return Math.random() * (this.max - this.min + 1) + this.min;
   }
 
-  // Customers per hour
-  CookieStand.prototype.cookiesPerHour = function() {
+  this.cookiesPerHour = function() {
     for (i = 0; i < this.hours.length; i++) {
-      var totalCustomers = Math.floor(this.customerPerHour() * this.avg);
-
-      this.totalArr.push(totalCustomers);
-      this.total += totalCustomers;
+      var totalCookies = Math.floor(this.customerPerHour() * this.avg);
+      this.totalArr.push(totalCookies);
+      this.total += totalCookies;
       console.log(this.totalArr);
     }
   }
 
-// function to create the table
+  // function to create the table
   CookieStand.prototype.renderCookiesPerHour = function() {
     this.cookiesPerHour();
     var table = document.getElementById('table');
@@ -43,18 +40,16 @@ function CookieStand(name, min, max, avg) {
     dataNames.textContent = this.name;
     tr.appendChild(dataNames);
 
-  // loop creating rows for store hours
     for (i = 0; i < this.hours.length; i++) {
       var td = document.createElement('td');
       td.textContent = this.totalArr[i] + ' Customers';
       tr.appendChild(td);
     }
-
-    //Totals row
     var tableTotal = document.createElement('td');
     tableTotal.textContent = this.total + ' Cookies';
     tr.appendChild(tableTotal);
   }
+}
 
 
 //calling each new variable and adding it to the table
@@ -64,85 +59,87 @@ southCenter.renderCookiesPerHour();
 belleSquare.renderCookiesPerHour();
 alki.renderCookiesPerHour();
 
-// User input form
-var userForm = document.getElementById('userForm');
-var submitButton = document.getElementById('submitButton');
-
+var form = document.getElementById('userForm');
 var table = document.getElementById('table');
-var tableBody = document.getElementById('tableBody');
-var tfoot = document.getElementsByTagName('tfoot')[i];
+var createRowElement = document.createElement('tr');
+table.appendChild(createRowElement);
 
-// Calculating function
-function makeFormRow(cellAdd) {
+// Generating new table for user input
+function generateTable() {
+  var store = document.createElement('td');
+  store.textContent = this.name;
+  createRowElement.appendChild(store);
+
+  // For loop to creat rows for user input shop hours
+  for (i = 0; i < storeHours.length; i++) {
+    var perHour = document.createElement('td');
+    perHour.textContent = this.totalArr;
+    createRowElement.appendChild(perHour);
+  }
+
+  //Total rows
+  var storeTotals = document.createElement('td');
+  storeTotals.textContent = this.total;
+  createRowElement.appendChild(storeTotals);
+}
+
+function renderNew() {
+  this.cookiesPerHour();
+  var storeName = document.createElement('tr')
+  storeName.textContent = this.name;
+  table.appendChild(name);
+
+  for (i = 0; i < storeHours.length; i++) {
+    var dataElement = document.createElement('td');
+    dataElement.textContent = this.totalArr[i];
+    name.appendChild(dataElement);
+  }
+
+  var cookieTotal = document.createElement('td');
+  cookieTotal.textContent = this.total;
+  storeName.appendChild(cookieTotal);
+}
+
+// 
+function storeRow() {
   var row = document.createElement('tr');
 
-  var nameCell = document.createElement('td');
-  nameCell.textContent = cellAdd.name;
-  row.appendChild(nameCell);
+  var cellName = document.createElement('td');
+  cellName.textContent = this.name;
+  row.appendChild(cellName);
 
-  var minCell = document.createElement('td');
-  minCell.textContent = cellAdd.min;
-  row.appendChild(minCell);
+  for (i = 0; i < storeHours.length; i++) {
+    var dataCell = document.createElement('td');
+    this.totalArr[i];
+    row.appendChild(dataCell);
+    table.appendChild(row);
 
-  var maxCell = document.createElement('td');
-  minCell.textContent = cellAdd.max;
-  row.appendChild(maxCell);
+    var totalCell = document.createElement('td');
+    totalCell.textContent = this.total;
+    row.appendChild(totalCell);
+  }
 
-  var avgCell = document.createElement('td');
-  avgCell.textContent = cellAdd.avg;
-  row.appendChild(avgCell);
+// Form submit event
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log(event);
 
-  var totalCell = document.createElement('td');
-  totalCell.textContent = cellAdd.total;
-  row.appendChild(totalCell);
+    var name = event.target.name.value;
+    var minPeeps = parseFloat(event.target.minPeeps.value);
+    var maxPeeps = parseFloat(event.target.maxPeeps.value);
+    var avgPeeps = parseFloat(event.target.avgPeeps.value);
 
-  tableBody.appendChild(row);
-}
+    var newStore = new CookieStand(name, min, max, avg);
+    newStore.cookiesPerHour();
+    newStore.storeRow();
+    newStore.generateTable();
 
-function updateObjects() {
-  for (var addData of totalArr) {
-    makeFormRow(addData);
+    event.target.name.value = null;
+    event.target.maxPeeps.value = null;
+    event.target.minPeeps.value = null;
+    event.target.avgPeeps.value = null;
+
+    form.addEventListener('submit',
+    handleFormSubmit);
   }
 }
-
-function formSubmit() {
- var userData = document.createElement('tr');
-
- var userStore = document.createElement('td');
- userStore.textContent = this.name;
- userData.appendChild(userStore);
-
- var userArr = document.createElement('td');
- userArr.textContent = this.totalArr[i] + ' Customers';
- userData.appendChild(userArr)
-
- var userTotal = document.createElement('td')
- userTotal.textContent = this.total + ' Cookies';
- userData.appendChild(userTotal)
-
- tfoot.appendChild(userData)
-}
-
-// Handling event
-function handleFormSubmit(event) {
-  event.preventDefault();
-  console.log(event);
-
-  var userName = event.target.name.value;
-  var userMin = parseFloat(event.target.min.value);
-  var userMax = parseFloat(event.target.max.value);
-  var userAvg = parseFloat(event.target.avg.value);
-
-  var userNew = new CookieStand(name, min, max, avg);
-  userNew.renderCookiesPerHour();
-
-  newItemRow(userNew);
-  tfoot.innerHTML = '';
-  formSubmit();
-
-}
-
-table.addEventListener('submitButton', handleFormSubmit);
-
-formSubmit();
-renderCookiesPerHour();
