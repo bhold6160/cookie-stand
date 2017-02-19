@@ -28,5 +28,12 @@ td {
 }
 
 #headImg {
-  margin-left: 30%;
+  margin-left: 50%;
+}
+
+.nav {
+  display: flex;
+  flex-flow: column-reverse;
+  list-style: none;
+
 }
