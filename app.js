@@ -17,13 +17,13 @@ function CookieStand(name, min, max, avg) {
   this.hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'],
 
   // Generate random number
-  this.customerPerHour = function(){
+  this.randomNumber = function(){
     return Math.random() * (this.max - this.min + 1) + this.min;
   }
 
-  this.cookiesPerHour = function() {
+  this.customerPerHour = function() {
     for (i = 0; i < this.hours.length; i++) {
-      var totalCookies = Math.floor(this.customerPerHour() * this.avg);
+      var totalCookies = Math.floor(this.randomNumber() * this.avg);
       this.totalArr.push(totalCookies);
       this.total += totalCookies;
       console.log(this.totalArr);
@@ -32,7 +32,7 @@ function CookieStand(name, min, max, avg) {
 
   // function to create the table
   CookieStand.prototype.renderCookiesPerHour = function() {
-    this.cookiesPerHour();
+    this.customerPerHour();
     var table = document.getElementById('table');
     var tr = document.createElement('tr');
     var dataNames = document.createElement('td');
@@ -93,7 +93,7 @@ function generateTable() {
     var avg = parseFloat(event.target.avg.value);
 
     var newStore = new CookieStand(name, min, max, avg);
-    newStore.cookiesPerHour();
+    newStore.customerPerHour();
     newStore.renderCookiesPerHour();
 
     event.target.name.value = null;
