@@ -38,6 +38,11 @@ p {
   color: #FFE0D9;
 }
 
+
+#headImg {
+  margin-left: 30%
+}
+
 .headImg {
   margin-left: 30%;
 }
@@ -48,6 +53,3 @@ p {
   margin: 2% 35%;
   text-decoration: none;
 }
-
-#headImg {
-  margin-left: 30%
