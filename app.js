@@ -69,14 +69,14 @@ function generateTable() {
   store.textContent = this.name;
   createRowElement.appendChild(store);
 
-  // For loop to creat rows for user input shop hours
+  // For loop to create rows for user input shop hours
   for (i = 0; i < storeHours.length; i++) {
     var perHour = document.createElement('td');
     perHour.textContent = this.totalArr;
     createRowElement.appendChild(perHour);
   }
 
-  // Total rows
+  // user Total
   var storeTotals = document.createElement('td');
   storeTotals.textContent = this.total;
   createRowElement.appendChild(storeTotals);

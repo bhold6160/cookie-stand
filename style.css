@@ -27,13 +27,16 @@ td {
   color: #FFE0D9;
 }
 
-#headImg {
-  margin-left: 50%;
+.headImg {
+  margin-left: 30%;
 }
 
 .nav {
   display: flex;
-  flex-flow: column-reverse;
-  list-style: none;
+  justify-content: space-between;
+  margin: 2% 30%
+}
+
+h2 {
 
 }
