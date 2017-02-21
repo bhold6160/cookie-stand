@@ -31,6 +31,7 @@ p {
 #table {
   color: #FFE0D9;
   border: solid;
+  border-style: ridge;
 }
 
 #userForm {
