@@ -1,3 +1,4 @@
+'use strict'
 // Creating new variables to add to table
 var storeHours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
 var pikePlace = new CookieStand('Pike Place Market ', 17, 88, 5.2);
@@ -22,7 +23,7 @@ function CookieStand(name, min, max, avg) {
   }
 
   this.customerPerHour = function() {
-    for (i = 0; i < this.hours.length; i++) {
+    for (var i = 0; i < this.hours.length; i++) {
       var totalCookies = Math.floor(this.randomNumber() * this.avg);
       this.totalArr.push(totalCookies);
       this.total += totalCookies;
@@ -40,7 +41,7 @@ function CookieStand(name, min, max, avg) {
     dataNames.textContent = this.name;
     tr.appendChild(dataNames);
 
-    for (i = 0; i < this.hours.length; i++) {
+    for (var i = 0; i < this.hours.length; i++) {
       var td = document.createElement('td');
       td.textContent = this.totalArr[i] + ' Customers';
       tr.appendChild(td);
@@ -70,7 +71,7 @@ function generateTable() {
   createRowElement.appendChild(store);
 
   // For loop to create rows for user input shop hours
-  for (i = 0; i < storeHours.length; i++) {
+  for (var i = 0; i < storeHours.length; i++) {
     var perHour = document.createElement('td');
     perHour.textContent = this.totalArr;
     createRowElement.appendChild(perHour);
