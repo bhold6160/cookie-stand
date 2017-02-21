@@ -1,3 +1,4 @@
+'use strict'
 // Creating new variables to add to table
 var storeHours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
 var pikePlace = new CookieStand('Pike Place Market ', 17, 88, 5.2);
@@ -17,13 +18,13 @@ function CookieStand(name, min, max, avg) {
   this.hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'],
 
   // Generate random number
-  this.customerPerHour = function(){
+  this.randomNumber = function(){
     return Math.random() * (this.max - this.min + 1) + this.min;
   }
 
-  this.cookiesPerHour = function() {
-    for (i = 0; i < this.hours.length; i++) {
-      var totalCookies = Math.floor(this.customerPerHour() * this.avg);
+  this.customerPerHour = function() {
+    for (var i = 0; i < this.hours.length; i++) {
+      var totalCookies = Math.floor(this.randomNumber() * this.avg);
       this.totalArr.push(totalCookies);
       this.total += totalCookies;
       console.log(this.totalArr);
@@ -32,7 +33,7 @@ function CookieStand(name, min, max, avg) {
 
   // function to create the table
   CookieStand.prototype.renderCookiesPerHour = function() {
-    this.cookiesPerHour();
+    this.customerPerHour();
     var table = document.getElementById('table');
     var tr = document.createElement('tr');
     var dataNames = document.createElement('td');
@@ -40,7 +41,7 @@ function CookieStand(name, min, max, avg) {
     dataNames.textContent = this.name;
     tr.appendChild(dataNames);
 
-    for (i = 0; i < this.hours.length; i++) {
+    for (var i = 0; i < this.hours.length; i++) {
       var td = document.createElement('td');
       td.textContent = this.totalArr[i] + ' Customers';
       tr.appendChild(td);
@@ -69,14 +70,14 @@ function generateTable() {
   store.textContent = this.name;
   createRowElement.appendChild(store);
 
-  // For loop to creat rows for user input shop hours
-  for (i = 0; i < storeHours.length; i++) {
+  // For loop to create rows for user input shop hours
+  for (var i = 0; i < storeHours.length; i++) {
     var perHour = document.createElement('td');
     perHour.textContent = this.totalArr;
     createRowElement.appendChild(perHour);
   }
 
-  // Total rows
+  // user Total
   var storeTotals = document.createElement('td');
   storeTotals.textContent = this.total;
   createRowElement.appendChild(storeTotals);
@@ -93,7 +94,7 @@ function generateTable() {
     var avg = parseFloat(event.target.avg.value);
 
     var newStore = new CookieStand(name, min, max, avg);
-    newStore.cookiesPerHour();
+    newStore.customerPerHour();
     newStore.renderCookiesPerHour();
 
     event.target.name.value = null;
