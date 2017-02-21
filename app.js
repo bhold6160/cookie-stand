@@ -53,6 +53,7 @@ function cookiesPerHour() {
 
  function render() {
   var ulElement = document.getElementById('pikePlaceMarket', 'seatacAirport', 'southCenter', 'belleSquare', 'alki');
+  var storeName = document.createElement('li')
   for (i = 0; i < this.hours.length; i++) {
   var li = document.createElement('li');
     li.textContent = hours[i] + ' ' + this.totalArr[i] + ' ' + ' cookies';
