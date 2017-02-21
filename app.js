@@ -1,69 +1,58 @@
+var hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
+var total = 0;
+var totalArr = [];
 
 var pikePlaceMarket = {
-    name: 'Pike Place Market'
+    name: 'Pike Place Market',
     min: 17,
     max: 88,
-    avg: 5.2,
-    total: 0,
-    totalArr: [],
-    hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
+    avg: 5.2
   }
 
   var seatacAirport = {
     name: "SeaTac Airport",
     min: 6,
     max: 24,
-    avg: 1.2,
-    totalArr: [],
-    total: 0,
-    hours: ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
+    avg: 1.2
   }
 
   var southCenter = {
     name: 'South Center',
     min: 11,
     max: 38,
-    avg: 1.9,
-    total: 0,
-    totalArr: [],
-    hours: ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
+    avg: 1.9
   }
 
   var belleSquare = {
-    name: Bellevue 'Square',
+    name: 'Bellevue Square',
     min: 20,
     max: 48,
-    avg: 3.3,
-    total: 0,
-    totalArr: [],
-    hours: ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
+    avg: 3.3
   }
 
   var alki = {
     name: 'Alki',
     min: 3,
     max: 24,
-    avg: 2.6,
-    total: 0,
-    totalArr: [],
-    hours: ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
+    avg: 2.6
   }
 
-customerPerHour: function(min, max) {
+function customerPerHour(min, max) {
   return Math.random() * (this.max - this.min + 1) + this.min;
-},
+}
 
-cookiesPerHour: function() {
+function cookiesPerHour() {
+  this.customerPerHour();
   for(i = 0; i < this.hours.length; i++) {
     var totalCookies = Math.floor(this.customerPerHour() * this.avg);
     this.totalArr.push(totalCookies)
     this.total += totalCookies
     console.log(this.totalArr)
     }
-  },
+  }
 
-render: function() {
-  var ulElement = document.getElementById('pikePlaceMarketlace', 'seatacAirport');
+ function render() {
+  var ulElement = document.getElementById('pikePlaceMarket', 'seatacAirport', 'southCenter', 'belleSquare', 'alki');
   for (i = 0; i < this.hours.length; i++) {
   var li = document.createElement('li');
     li.textContent = hours[i] + ' ' + this.totalArr[i] + ' ' + ' cookies';
@@ -72,8 +61,7 @@ render: function() {
     li.textContent = 'Totals ' + this.total;
     ulElement.appendChild[i];
   }
-}
 
-pikePlaceMarket.customerPerHour();
-pikePlaceMarket.cookiesPerHour();
-pikePlaceMarket.render();
+customerPerHour();
+cookiesPerHour();
+render();
