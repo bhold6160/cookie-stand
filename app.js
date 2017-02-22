@@ -1,4 +1,4 @@
-var hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
+var hours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm',];
 var total = 0;
 var totalArr = [];
 
@@ -35,15 +35,16 @@ var pikePlaceMarket = {
     min: 3,
     max: 24,
     avg: 2.6
-  }
+  };
 
 function customerPerHour(min, max) {
+  console.log(customerPerHour)
   return Math.random() * (this.max - this.min + 1) + this.min;
 }
 
 function cookiesPerHour() {
-  this.customerPerHour();
-  for(i = 0; i < this.hours.length; i++) {
+  console.log(cookiesPerHour)
+  for(var i = 0; i < hours.length; i++) {
     var totalCookies = Math.floor(this.customerPerHour() * this.avg);
     this.totalArr.push(totalCookies)
     this.total += totalCookies
@@ -52,17 +53,22 @@ function cookiesPerHour() {
   }
 
  function render() {
-  var ulElement = document.getElementById('pikePlaceMarket', 'seatacAirport', 'southCenter', 'belleSquare', 'alki');
+   this.cookiesPerHour();
+   console.log(render);
+  var ulElement = document.getElementById('pikePlaceMarket');
   var storeName = document.createElement('li')
-  for (i = 0; i < this.hours.length; i++) {
+
+  for (var i = 0; i < hours.length; i++) {
   var li = document.createElement('li');
     li.textContent = hours[i] + ' ' + this.totalArr[i] + ' ' + ' cookies';
     ulElement.appendChild(li);
     }
-    li.textContent = 'Totals ' + this.total;
+    li.textContent = 'Total ' + this.total;
     ulElement.appendChild[i];
   }
 
 customerPerHour();
 cookiesPerHour();
 render();
+
+/////////////////////////
