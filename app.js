@@ -1,4 +1,3 @@
-'use strict'
 // Creating new variables to add to table
 var storeHours = ['10am','11am','12pm','1pm','2pm','3pm','4pm','5pm'];
 var pikePlace = new CookieStand('Pike Place Market ', 17, 88, 5.2);
