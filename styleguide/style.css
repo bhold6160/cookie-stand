@@ -1,0 +1,55 @@
+#head1 {
+  font-family: 'Raleway', sans-serif;
+  color: #E22B00;
+}
+
+#head2 {
+  font-family: 'Raleway', sans-serif;
+  color: #B47C6F;
+}
+
+#head3 {
+  font-family: 'Raleway', sans-serif;
+  color: #B47C6F;
+}
+
+#p {
+  font-family: 'Raleway', sans-serif;
+  color: #FFE0D9;
+}
+
+#primary {
+  background-color: #5B5959;
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  vertical-align: bottom;
+  color: white;
+}
+
+#secondary {
+  background-color: #E22B00;
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  vertical-align: bottom;
+  color: white;
+}
+
+#third {
+  background-color: #B47C6F;
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  vertical-align: bottom;
+  color: white;
+}
+
+#forth {
+  background-color: #FFE0D9;
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  vertical-align: bottom;
+  color: white;
+}
